@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConganxaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_DoMat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDoMat" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_LoaiVB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiVB" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_NguoiNhan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNguoiNhan" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Tacgia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tentacgia" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_thongtin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ngayden" Type="datetime" />
+          <Property Name="SoDen" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tentacgia" Type="nvarchar" MaxLength="150" />
+          <Property Name="Sokyhieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ngaythang" Type="datetime" />
+          <Property Name="TenLoaiVB" Type="nvarchar" MaxLength="150" />
+          <Property Name="KyHieu" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenDoMat" Type="nvarchar" MaxLength="150" />
+          <Property Name="NguoiNhan" Type="nvarchar" MaxLength="150" />
+          <Property Name="Ngaydukienhoanthanh" Type="datetime" />
+          <Property Name="Trichyeunoidung" Type="nvarchar(max)" />
+          <Property Name="Ghichu" Type="nvarchar(max)" />
+          <Property Name="NgayHoanThanh" Type="datetime" />
+          <Property Name="Hoanthanh" Type="bit" />
+          <Property Name="Chuahoanthanh" Type="bit" />
+          <Property Name="VBlienket" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dinhkemfile" Type="nvarchar" MaxLength="250" />
+          <Property Name="NgaytaoVB" Type="datetime" />
+          <Property Name="NgaysuaVB" Type="datetime" />
+          <Property Name="Nguoithaotacuoicung" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <Function Name="AccountChangePass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AccountLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="DeleteAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteDoMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteLoaiVB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteNguoiNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteTacGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteThongtin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAllAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllDomat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllLoaiVB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllNguoiNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllTacgia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllThongtin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Years" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Roles" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="InsertDoMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertLoaiVB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertNguoiNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertTacGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="InsertThongtin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngayden" Type="datetime" Mode="In" />
+          <Parameter Name="SoDen" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tentacgia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sokyhieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngaythang" Type="datetime" Mode="In" />
+          <Parameter Name="TenLoaiVB" Type="nvarchar" Mode="In" />
+          <Parameter Name="KyHieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="TenDoMat" Type="nvarchar" Mode="In" />
+          <Parameter Name="NguoiNhan" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngaydukienhoanthanh" Type="datetime" Mode="In" />
+          <Parameter Name="Trichyeunoidung" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Ghichu" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgayHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="Hoanthanh" Type="bit" Mode="In" />
+          <Parameter Name="Chuahoanthanh" Type="bit" Mode="In" />
+          <Parameter Name="VBlienket" Type="nvarchar" Mode="In" />
+          <Parameter Name="Dinhkemfile" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaytaoVB" Type="datetime" Mode="In" />
+          <Parameter Name="Nguoithaotacuoicung" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Roles" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UpdateDoMat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateLoaiVB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateNguoiNHan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateTacGia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateThongtin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngayden" Type="datetime" Mode="In" />
+          <Parameter Name="SoDen" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tentacgia" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sokyhieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngaythang" Type="datetime" Mode="In" />
+          <Parameter Name="TenLoaiVB" Type="nvarchar" Mode="In" />
+          <Parameter Name="KyHieu" Type="nvarchar" Mode="In" />
+          <Parameter Name="TenDoMat" Type="nvarchar" Mode="In" />
+          <Parameter Name="NguoiNhan" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngaydukienhoanthanh" Type="datetime" Mode="In" />
+          <Parameter Name="Trichyeunoidung" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Ghichu" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NgayHoanThanh" Type="datetime" Mode="In" />
+          <Parameter Name="Hoanthanh" Type="bit" Mode="In" />
+          <Parameter Name="Chuahoanthanh" Type="bit" Mode="In" />
+          <Parameter Name="VBlienket" Type="nvarchar" Mode="In" />
+          <Parameter Name="Dinhkemfile" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaysuaVB" Type="datetime" Mode="In" />
+          <Parameter Name="Nguoithaotacuoicung" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ConganxaModelStoreContainer">
+          <EntitySet Name="tbl_Account" EntityType="Self.tbl_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DoMat" EntityType="Self.tbl_DoMat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoaiVB" EntityType="Self.tbl_LoaiVB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_NguoiNhan" EntityType="Self.tbl_NguoiNhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Tacgia" EntityType="Self.tbl_Tacgia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_thongtin" EntityType="Self.tbl_thongtin" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConganxaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Roles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_DoMat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDoMat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_LoaiVB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiVB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_NguoiNhan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNguoiNhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Tacgia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tentacgia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_thongtin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ngayden" Type="DateTime" Precision="3" />
+          <Property Name="SoDen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tentacgia" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Sokyhieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaythang" Type="DateTime" Precision="3" />
+          <Property Name="TenLoaiVB" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="KyHieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenDoMat" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiNhan" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaydukienhoanthanh" Type="DateTime" Precision="3" />
+          <Property Name="Trichyeunoidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayHoanThanh" Type="DateTime" Precision="3" />
+          <Property Name="Hoanthanh" Type="Boolean" />
+          <Property Name="Chuahoanthanh" Type="Boolean" />
+          <Property Name="VBlienket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dinhkemfile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NgaytaoVB" Type="DateTime" Precision="3" />
+          <Property Name="NgaysuaVB" Type="DateTime" Precision="3" />
+          <Property Name="Nguoithaotacuoicung" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ConganxaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Account" EntityType="Self.tbl_Account" />
+          <EntitySet Name="tbl_DoMat" EntityType="Self.tbl_DoMat" />
+          <EntitySet Name="tbl_LoaiVB" EntityType="Self.tbl_LoaiVB" />
+          <EntitySet Name="tbl_NguoiNhan" EntityType="Self.tbl_NguoiNhan" />
+          <EntitySet Name="tbl_Tacgia" EntityType="Self.tbl_Tacgia" />
+          <EntitySet Name="tbl_thongtin" EntityType="Self.tbl_thongtin" />
+          <FunctionImport Name="AccountChangePass">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AccountLogin" ReturnType="Collection(ConganxaModel.AccountLogin_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteAccount">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDoMat">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteLoaiVB">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteNguoiNhan">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteTacGia">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteThongtin">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllAccount" ReturnType="Collection(ConganxaModel.GetAllAccount_Result)" />
+          <FunctionImport Name="GetAllDomat" ReturnType="Collection(ConganxaModel.GetAllDomat_Result)" />
+          <FunctionImport Name="GetAllLoaiVB" ReturnType="Collection(ConganxaModel.GetAllLoaiVB_Result)" />
+          <FunctionImport Name="GetAllNguoiNhan" ReturnType="Collection(ConganxaModel.GetAllNguoiNhan_Result)" />
+          <FunctionImport Name="GetAllTacgia" ReturnType="Collection(ConganxaModel.GetAllTacgia_Result)" />
+          <FunctionImport Name="InsertAccount">
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Roles" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="InsertDoMat">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertLoaiVB">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertNguoiNhan">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertTacGia">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertThongtin">
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Ngayden" Mode="In" Type="DateTime" />
+            <Parameter Name="SoDen" Mode="In" Type="String" />
+            <Parameter Name="Tentacgia" Mode="In" Type="String" />
+            <Parameter Name="Sokyhieu" Mode="In" Type="String" />
+            <Parameter Name="Ngaythang" Mode="In" Type="DateTime" />
+            <Parameter Name="TenLoaiVB" Mode="In" Type="String" />
+            <Parameter Name="KyHieu" Mode="In" Type="String" />
+            <Parameter Name="TenDoMat" Mode="In" Type="String" />
+            <Parameter Name="NguoiNhan" Mode="In" Type="String" />
+            <Parameter Name="Ngaydukienhoanthanh" Mode="In" Type="DateTime" />
+            <Parameter Name="Trichyeunoidung" Mode="In" Type="String" />
+            <Parameter Name="Ghichu" Mode="In" Type="String" />
+            <Parameter Name="NgayHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="Hoanthanh" Mode="In" Type="Boolean" />
+            <Parameter Name="Chuahoanthanh" Mode="In" Type="Boolean" />
+            <Parameter Name="VBlienket" Mode="In" Type="String" />
+            <Parameter Name="Dinhkemfile" Mode="In" Type="String" />
+            <Parameter Name="NgaytaoVB" Mode="In" Type="DateTime" />
+            <Parameter Name="Nguoithaotacuoicung" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAccount">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Roles" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDoMat">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateLoaiVB">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateNguoiNHan">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateTacGia">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateThongtin">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="Ngayden" Mode="In" Type="DateTime" />
+            <Parameter Name="SoDen" Mode="In" Type="String" />
+            <Parameter Name="Tentacgia" Mode="In" Type="String" />
+            <Parameter Name="Sokyhieu" Mode="In" Type="String" />
+            <Parameter Name="Ngaythang" Mode="In" Type="DateTime" />
+            <Parameter Name="TenLoaiVB" Mode="In" Type="String" />
+            <Parameter Name="KyHieu" Mode="In" Type="String" />
+            <Parameter Name="TenDoMat" Mode="In" Type="String" />
+            <Parameter Name="NguoiNhan" Mode="In" Type="String" />
+            <Parameter Name="Ngaydukienhoanthanh" Mode="In" Type="DateTime" />
+            <Parameter Name="Trichyeunoidung" Mode="In" Type="String" />
+            <Parameter Name="Ghichu" Mode="In" Type="String" />
+            <Parameter Name="NgayHoanThanh" Mode="In" Type="DateTime" />
+            <Parameter Name="Hoanthanh" Mode="In" Type="Boolean" />
+            <Parameter Name="Chuahoanthanh" Mode="In" Type="Boolean" />
+            <Parameter Name="VBlienket" Mode="In" Type="String" />
+            <Parameter Name="Dinhkemfile" Mode="In" Type="String" />
+            <Parameter Name="NgaysuaVB" Mode="In" Type="DateTime" />
+            <Parameter Name="Nguoithaotacuoicung" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllThongtin" ReturnType="Collection(ConganxaModel.GetAllThongtin_Result)">
+            <Parameter Name="Years" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="AccountLogin_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="String" Name="Roles" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllAccount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Password" Nullable="false" />
+          <Property Type="String" Name="Roles" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllDomat_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenDoMat" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllLoaiVB_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenLoaiVB" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetAllNguoiNhan_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="TenNguoiNhan" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllTacgia_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Tentacgia" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetAllThongtin_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngayden" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SoDen" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tentacgia" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Sokyhieu" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngaythang" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TenLoaiVB" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="KyHieu" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenDoMat" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="NguoiNhan" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="Ngaydukienhoanthanh" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Trichyeunoidung" Nullable="true" />
+          <Property Type="String" Name="Ghichu" Nullable="true" />
+          <Property Type="DateTime" Name="NgayHoanThanh" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Hoanthanh" Nullable="true" />
+          <Property Type="Boolean" Name="Chuahoanthanh" Nullable="true" />
+          <Property Type="String" Name="VBlienket" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dinhkemfile" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="NgaytaoVB" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="NgaysuaVB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Nguoithaotacuoicung" Nullable="true" MaxLength="150" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConganxaModelStoreContainer" CdmEntityContainer="ConganxaEntities">
+          <EntitySetMapping Name="tbl_Account">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_Account">
+              <MappingFragment StoreEntitySet="tbl_Account">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_DoMat">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_DoMat">
+              <MappingFragment StoreEntitySet="tbl_DoMat">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenDoMat" ColumnName="TenDoMat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoaiVB">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_LoaiVB">
+              <MappingFragment StoreEntitySet="tbl_LoaiVB">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenLoaiVB" ColumnName="TenLoaiVB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_NguoiNhan">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_NguoiNhan">
+              <MappingFragment StoreEntitySet="tbl_NguoiNhan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Tacgia">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_Tacgia">
+              <MappingFragment StoreEntitySet="tbl_Tacgia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_thongtin">
+            <EntityTypeMapping TypeName="ConganxaModel.tbl_thongtin">
+              <MappingFragment StoreEntitySet="tbl_thongtin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Ngayden" ColumnName="Ngayden" />
+                <ScalarProperty Name="SoDen" ColumnName="SoDen" />
+                <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+                <ScalarProperty Name="Sokyhieu" ColumnName="Sokyhieu" />
+                <ScalarProperty Name="Ngaythang" ColumnName="Ngaythang" />
+                <ScalarProperty Name="TenLoaiVB" ColumnName="TenLoaiVB" />
+                <ScalarProperty Name="KyHieu" ColumnName="KyHieu" />
+                <ScalarProperty Name="TenDoMat" ColumnName="TenDoMat" />
+                <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+                <ScalarProperty Name="Ngaydukienhoanthanh" ColumnName="Ngaydukienhoanthanh" />
+                <ScalarProperty Name="Trichyeunoidung" ColumnName="Trichyeunoidung" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="Hoanthanh" ColumnName="Hoanthanh" />
+                <ScalarProperty Name="Chuahoanthanh" ColumnName="Chuahoanthanh" />
+                <ScalarProperty Name="VBlienket" ColumnName="VBlienket" />
+                <ScalarProperty Name="Dinhkemfile" ColumnName="Dinhkemfile" />
+                <ScalarProperty Name="NgaytaoVB" ColumnName="NgaytaoVB" />
+                <ScalarProperty Name="NgaysuaVB" ColumnName="NgaysuaVB" />
+                <ScalarProperty Name="Nguoithaotacuoicung" ColumnName="Nguoithaotacuoicung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AccountChangePass" FunctionName="ConganxaModel.Store.AccountChangePass" />
+          <FunctionImportMapping FunctionImportName="AccountLogin" FunctionName="ConganxaModel.Store.AccountLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.AccountLogin_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DeleteAccount" FunctionName="ConganxaModel.Store.DeleteAccount" />
+          <FunctionImportMapping FunctionImportName="DeleteDoMat" FunctionName="ConganxaModel.Store.DeleteDoMat" />
+          <FunctionImportMapping FunctionImportName="DeleteLoaiVB" FunctionName="ConganxaModel.Store.DeleteLoaiVB" />
+          <FunctionImportMapping FunctionImportName="DeleteNguoiNhan" FunctionName="ConganxaModel.Store.DeleteNguoiNhan" />
+          <FunctionImportMapping FunctionImportName="DeleteTacGia" FunctionName="ConganxaModel.Store.DeleteTacGia" />
+          <FunctionImportMapping FunctionImportName="DeleteThongtin" FunctionName="ConganxaModel.Store.DeleteThongtin" />
+          <FunctionImportMapping FunctionImportName="GetAllAccount" FunctionName="ConganxaModel.Store.GetAllAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllAccount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllDomat" FunctionName="ConganxaModel.Store.GetAllDomat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllDomat_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenDoMat" ColumnName="TenDoMat" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLoaiVB" FunctionName="ConganxaModel.Store.GetAllLoaiVB">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllLoaiVB_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenLoaiVB" ColumnName="TenLoaiVB" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllNguoiNhan" FunctionName="ConganxaModel.Store.GetAllNguoiNhan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllNguoiNhan_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllTacgia" FunctionName="ConganxaModel.Store.GetAllTacgia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllTacgia_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertAccount" FunctionName="ConganxaModel.Store.InsertAccount" />
+          <FunctionImportMapping FunctionImportName="InsertDoMat" FunctionName="ConganxaModel.Store.InsertDoMat" />
+          <FunctionImportMapping FunctionImportName="InsertLoaiVB" FunctionName="ConganxaModel.Store.InsertLoaiVB" />
+          <FunctionImportMapping FunctionImportName="InsertNguoiNhan" FunctionName="ConganxaModel.Store.InsertNguoiNhan" />
+          <FunctionImportMapping FunctionImportName="InsertTacGia" FunctionName="ConganxaModel.Store.InsertTacGia" />
+          <FunctionImportMapping FunctionImportName="InsertThongtin" FunctionName="ConganxaModel.Store.InsertThongtin" />
+          <FunctionImportMapping FunctionImportName="UpdateAccount" FunctionName="ConganxaModel.Store.UpdateAccount" />
+          <FunctionImportMapping FunctionImportName="UpdateDoMat" FunctionName="ConganxaModel.Store.UpdateDoMat" />
+          <FunctionImportMapping FunctionImportName="UpdateLoaiVB" FunctionName="ConganxaModel.Store.UpdateLoaiVB" />
+          <FunctionImportMapping FunctionImportName="UpdateNguoiNHan" FunctionName="ConganxaModel.Store.UpdateNguoiNHan" />
+          <FunctionImportMapping FunctionImportName="UpdateTacGia" FunctionName="ConganxaModel.Store.UpdateTacGia" />
+          <FunctionImportMapping FunctionImportName="UpdateThongtin" FunctionName="ConganxaModel.Store.UpdateThongtin" />
+          <FunctionImportMapping FunctionImportName="GetAllThongtin" FunctionName="ConganxaModel.Store.GetAllThongtin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConganxaModel.GetAllThongtin_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Ngayden" ColumnName="Ngayden" />
+                <ScalarProperty Name="SoDen" ColumnName="SoDen" />
+                <ScalarProperty Name="Tentacgia" ColumnName="Tentacgia" />
+                <ScalarProperty Name="Sokyhieu" ColumnName="Sokyhieu" />
+                <ScalarProperty Name="Ngaythang" ColumnName="Ngaythang" />
+                <ScalarProperty Name="TenLoaiVB" ColumnName="TenLoaiVB" />
+                <ScalarProperty Name="KyHieu" ColumnName="KyHieu" />
+                <ScalarProperty Name="TenDoMat" ColumnName="TenDoMat" />
+                <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+                <ScalarProperty Name="Ngaydukienhoanthanh" ColumnName="Ngaydukienhoanthanh" />
+                <ScalarProperty Name="Trichyeunoidung" ColumnName="Trichyeunoidung" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+                <ScalarProperty Name="NgayHoanThanh" ColumnName="NgayHoanThanh" />
+                <ScalarProperty Name="Hoanthanh" ColumnName="Hoanthanh" />
+                <ScalarProperty Name="Chuahoanthanh" ColumnName="Chuahoanthanh" />
+                <ScalarProperty Name="VBlienket" ColumnName="VBlienket" />
+                <ScalarProperty Name="Dinhkemfile" ColumnName="Dinhkemfile" />
+                <ScalarProperty Name="NgaytaoVB" ColumnName="NgaytaoVB" />
+                <ScalarProperty Name="NgaysuaVB" ColumnName="NgaysuaVB" />
+                <ScalarProperty Name="Nguoithaotacuoicung" ColumnName="Nguoithaotacuoicung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
